@@ -2,14 +2,14 @@ package tec;
 
 import tec.EtatPassager.Etat;
 /**
- * Cette class implémente les methodes de Usager et Passager pour gérer l'etat d'un passager
+ * Cette class implÃ©mente les methodes de Usager et Passager pour gÃ©rer l'etat d'un passager
  * Elle instancie un passager avec un non, une destination et un etat
  * 
  * @author Soler Ayoube
  *
  */
 
-public class PassagerStandard extends PassagerAbstrait{
+public class PassagerStandard extends PassagerAbstract{
 
 	public PassagerStandard(String nom, int destination) throws IllegalArgumentException {
 		super(nom, destination);
@@ -21,17 +21,17 @@ public class PassagerStandard extends PassagerAbstrait{
 
 
 	/**
-	   * Indique au passager qu'il est arrivé à un nouvel arrêt. Cette methode
+	   * Indique au passager qu'il est arrivÃ© Ã  un nouvel arrÃªt. Cette methode
 	   * fixe le comportement (changer de place ou sortir). 
-	   * Cette méthode est appelée par Bus.
+	   * Cette mÃ©thode est appelÃ©e par Bus.
 	   *
 	   * @param bus le bus dans lequel se trouve le passager.
-	   * @param numeroArret numero de l'arrêt.
+	   * @param numeroArret numero de l'arrÃªt.
 	   */
 	@Override
-	public void nouvelArret(Bus bus, int numeroArret) throws UsagerInvalideException {
+	public void choixChangerPlace(Bus bus, int numeroArret) throws UsagerInvalideException {
 		if(this.destination < numeroArret) {
-			throw new UsagerInvalideException("L'arret de ce passager a déjà été passer. Erreur");
+			throw new UsagerInvalideException("L'arret de ce passager a dÃ©jÃ  Ã©tÃ© passer. Erreur");
 		}
 		if(this.etat.monEtat ==  EtatPassager.Etat.DEHORS) {
 			throw new UsagerInvalideException("Le passager n'est pas dans le bus, il ne doit donc pas etre prevenu de ce nouvel arret");
@@ -48,11 +48,11 @@ public class PassagerStandard extends PassagerAbstrait{
 
 	/**
 	   * Indique que le passager monte dans un bus
-	   * cette methode et appelée pas bus  
+	   * cette methode et appelÃ©e pas bus  
 	   * @param bus le bus dans lequel va monter le passager
 	 */
 	@Override
-	public void monterDans(Bus b) throws UsagerInvalideException {
+	public void choixPlaceMontee(Bus b) throws UsagerInvalideException {
 		if(this.etat.monEtat != EtatPassager.Etat.DEHORS) {
 			throw new UsagerInvalideException("On ne peut faire monter un passager uniquement si il est dehors");
 		}
@@ -62,5 +62,6 @@ public class PassagerStandard extends PassagerAbstrait{
 				b.demanderPlaceDebout(this);
 			}
 	}
+	
 
 }

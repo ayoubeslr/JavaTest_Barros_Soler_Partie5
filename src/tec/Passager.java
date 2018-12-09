@@ -75,5 +75,6 @@ interface Passager {
    * @throws UsagerInvalideException the usager invalide exception
    */
   public void nouvelArret(Bus bus, int numeroArret) throws UsagerInvalideException;
+
 }
 

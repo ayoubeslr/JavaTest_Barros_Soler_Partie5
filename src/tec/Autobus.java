@@ -142,7 +142,10 @@ public class Autobus implements Transport,Bus {
 		if(this.listePass.contains(p)) {
 				throw new IllegalArgumentException("Le passager est déjà dans le bus");
 		}
-		if(this.aPlaceDebout()) {
+		
+		if(this.aPlaceAssise()) {
+			this.demanderPlaceAssise(p);
+		}else if(this.aPlaceDebout()) {
 			this.jaugeDebout.incrementer();
 			this.listePass.add(p);
 			p.accepterPlaceDebout();

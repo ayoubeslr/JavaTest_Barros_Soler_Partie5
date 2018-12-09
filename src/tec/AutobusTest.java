@@ -219,7 +219,8 @@ public class AutobusTest {
 	
 			auto.demanderPlaceDebout(passDehors);
 
-		assertEquals(auto.jaugeDebout.getValeur(), 1, 0);
+		assertEquals(auto.jaugeDebout.getValeur(), 0, 0);
+		assertEquals(auto.jaugeAssis.getValeur(), 1, 0);
 	}
 
 	/**
